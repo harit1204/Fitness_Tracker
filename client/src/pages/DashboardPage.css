@@ -1,125 +1,107 @@
-/* .dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .gauge-container {
-    display: flex;
-    justify-content: space-around;
-    width: 400px;
-    margin-bottom: 20px;
-  }
-  
-  .gauge {
-    position: relative;
-    width: 100px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .semi-circle {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    border: 1px solid #000;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  
-  .arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 10px solid #000;
-    bottom: 0;
-    left: calc(50% - 5px);
-    transform-origin: bottom center;
-  }
-  
-  .gauge-reading {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .gauge-label {
-    font-size: 14px;
-  }
-  
-  .current-values {
-    text-align: center;
-  }
-  */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 
-  .dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+.gauge-container {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.gauge {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.semi-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #f0f0f0;
+  position: relative;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
   }
-  
-  .gauge-container {
-    display: flex;
-    justify-content: space-between;
-    width: 50%; /* Adjust width as needed */
+  to {
+    transform: scale(1.1);
   }
-  
-  .gauge {
-    position: relative;
-    width: 150px; /* Adjust size as needed */
-    height: 150px; /* Adjust size as needed */
+}
+
+.arrow {
+  width: 4px;
+  height: 80px;
+  background-color: #ff3333;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 2px);
+  transform-origin: bottom center;
+}
+
+.gauge-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.gauge-label {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: #666;
+}
+
+/* Bar chart styles */
+.bar-chart-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.bar {
+  width: 30px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  transition: height 0.5s ease; /* Add transition */
+}
+
+/* Optional: Add animation to the bars */
+@keyframes grow {
+  from {
+    height: 0;
   }
-  
-  .semi-circle {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 5px solid #e0e0e0;
-    position: relative;
-  }
-  
-  .semi-circle::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 5px solid transparent;
-    
-    /* Add markers at specific positions */
-    background-image: radial-gradient(circle, #e0e0e0 20%, transparent 30%);
-  }
-  
-  .arrow {
-    width: 10px;
-    height: 20px;
-    background-color: #333;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: bottom center;
-    transform: rotate(-90deg); /* Initial rotation */
-  }
-  
-  .gauge-reading {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .gauge-label {
-    display: none;
-  }
-  
-  .current-values {
-    margin-top: 20px;
-  }
-  
+}
+
+.bar:hover {
+  animation: grow 0.5s forwards; /* Add grow animation on hover */
+}
+
+/* Line chart styles */
+.line-chart-container {
+  margin-top: 20px;
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+}
+
+.chart-svg text {
+  font-size: 12px;
+  fill: #666;
+}
