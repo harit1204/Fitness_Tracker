@@ -5,16 +5,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+const cors = require('cors');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/fitness_tracker')
-  .then(() => console.log('MongoDB connected…'))
-  .catch(err => console.log(err));
+.then(() => console.log('MongoDB connected…'))
+.catch(err => console.log(err));
 
 var indexRouter = require('./routes/index');
 var userRoutes = require('./routes/userRoutes'); // Assuming your user routes file is named userRoutes.js
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
